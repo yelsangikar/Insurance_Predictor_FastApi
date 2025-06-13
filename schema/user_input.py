@@ -4,6 +4,14 @@ from config.city_tier import tier_1_cities, tier_2_cities
 
 
 # pydantic model to validate incoming data
+class HomeResponse(BaseModel):
+    message: str
+
+class HealthResponse(BaseModel):
+    status: str
+    version: str
+    model_loaded: bool
+
 class UserInput(BaseModel):
     age: Annotated[int, Field(..., gt=0, lt=120, description='Age of the user')]
     weight: Annotated[float, Field(..., gt=0, description='Weight of the user')]
